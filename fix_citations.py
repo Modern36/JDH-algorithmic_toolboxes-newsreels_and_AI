@@ -21,6 +21,7 @@ import re
 import sys
 from urllib.parse import unquote
 from pathlib import Path
+from subprocess import run
 
 
 def fix_citation_metadata(notebook_path):
@@ -134,6 +135,8 @@ def main():
     else:
         print("\nNo citations needed fixing - all metadata is already correct!")
 
+    run([
+        'jupyter', 'nbconvert', '--ClearMetadataPreprocessor.enabled=True', '--inplace', notebook_path])
 
 if __name__ == '__main__':
     main()
