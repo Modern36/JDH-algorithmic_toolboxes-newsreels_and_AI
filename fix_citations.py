@@ -138,5 +138,10 @@ def main():
     run([
         'jupyter', 'nbconvert', '--ClearMetadataPreprocessor.enabled=True', '--inplace', notebook_path])
 
+    print("⚠️                                  ⚠️")
+    print("⚠️ Remember to re-add all the tags! ⚠️")
+    print("⚠️                                  ⚠️")
+
+
 if __name__ == '__main__':
     main()
