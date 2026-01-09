@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal Digital Corpus Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script type="module" crossorigin src="./assets/index-Qi3R_MBx.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BgdkCTO9.css">
+</head>
+
+<body>
+  <div id="app">
+    <div id="map-container">
+      <div id="map"></div>
+      <div id="preliminary-watermark">Journal Digital Corpus</div>
+      <a href="https://github.com/Modern36/jdc-map.git" target="_blank" rel="noopener noreferrer" id="github-link" aria-label="View source on GitHub">
+        <svg width="32" height="32" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
+    </div>
+
+    <aside id="sidebar">
+      <header>
+        <h1>Journal Digital Corpus Map</h1>
+        <p style="font-size: 0.7rem; color: #999; margin-top: 0.25rem; line-height: 1.3;">
+          Part of the research project 'Modern Times 1936'<br>
+          Financed by Bank of Sweden Tercentenary Foundation (P21-0012)
+        </p>
+        <p id="version-info" style="font-size: 0.65rem; color: #666; margin-top: 0.5rem;">
+          Loading version...
+        </p>
+      </header>
+
+      <section id="layer-controls">
+        <h2>Layers</h2>
+        <label>
+          <input type="checkbox" id="layer1-toggle" checked>
+          JDC Speech
+        </label>
+        <label>
+          <input type="checkbox" id="layer2-toggle" checked>
+          SMDB - SAB
+        </label>
+      </section>
+
+      <section id="search-section">
+        <h2>Search</h2>
+        <div id="search-container">
+          <input type="text" id="search-input" placeholder="Search locations...">
+          <div id="search-results"></div>
+        </div>
+      </section>
+
+      <section id="timeline-section">
+        <h2>Playback</h2>
+        <div id="current-window"></div>
+        <div id="timeline-controls">
+          <button id="play-pause">Play</button>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <label>
+              Win:
+              <input type="number" id="window-size" value="10" min="1" max="50">
+              yr
+            </label>
+            <label>
+              Delay:
+              <input type="number" id="play-delay" value="1" min="0.1" max="10" step="0.1">
+              s
+            </label>
+            <label>
+              Step:
+              <input type="number" id="play-step" value="1" min="1" max="10">
+              yr
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="stats-section">
+        <h2>Statistics</h2>
+        <div id="stats-charts"></div>
+      </section>
+
+      <section id="video-panel" style="display: none;">
+        <div class="video-panel-header">
+          <h2><span id="location-name">Location</span></h2>
+          <button class="close-button" aria-label="Close video panel">×</button>
+        </div>
+        <div class="video-panel-subtitle"></div>
+        <div class="video-list"></div>
+      </section>
+
+      <section id="acknowledgments-section">
+        <details style="cursor: pointer;">
+          <summary style="font-size: 0.85rem; font-weight: 600; color: var(--color-text); padding: 0.5rem 0;">
+            Technologies & Acknowledgments
+          </summary>
+          <div style="font-size: 0.75rem; line-height: 1.5; color: #bbb; padding: 0.5rem 0;">
+            <p style="margin-bottom: 0.5rem;"><strong>Core Visualization:</strong></p>
+            <ul style="margin: 0 0 0.75rem 1.2rem;">
+              <li>D3.js v7.8.5 (Bostock et al., 2011)</li>
+              <li>Leaflet.js v1.9.4 (Agafonkin et al.)</li>
+            </ul>
+
+            <p style="margin-bottom: 0.5rem;"><strong>Map Data & Geocoding:</strong></p>
+            <ul style="margin: 0 0 0.75rem 1.2rem;">
+              <li>OpenStreetMap (Haklay & Weber, 2008)</li>
+              <li>Nominatim (OpenStreetMap Foundation)</li>
+              <li>Geofabrik OSM extracts</li>
+            </ul>
+
+            <p style="margin-bottom: 0.5rem;"><strong>Data Sources:</strong></p>
+            <ul style="margin: 0 0 0.75rem 1.2rem;">
+              <li>Journal Digital Corpus (Aspenskog et al., 2025)</li>
+              <li>Svensk Mediedatabas (SMDB)</li>
+            </ul>
+
+            <p style="margin-bottom: 0.5rem;"><strong>NLP Tools:</strong></p>
+            <ul style="margin: 0 0 0.75rem 1.2rem;">
+              <li>KB-BERT NER Model (KB Labb, 2022)</li>
+            </ul>
+
+            <p style="margin-bottom: 0.5rem;"><strong>Development:</strong></p>
+            <ul style="margin: 0 0 0.75rem 1.2rem;">
+              <li>Vite v5.0, Node.js, npm</li>
+              <li>Python 3 (data processing)</li>
+              <li>Claude 4.5 Sonnet & Claude Code (Anthropic, 2025)</li>
+            </ul>
+
+            <p style="margin-bottom: 0.5rem;"><strong>Web Standards:</strong></p>
+            <ul style="margin: 0 0 0.75rem 1.2rem;">
+              <li>JavaScript/ECMAScript 2023</li>
+              <li>HTML5 & CSS3 (W3C)</li>
+            </ul>
+
+            <p style="margin-top: 0.75rem; font-size: 0.7rem; color: #888;">
+              Full citations available in <code>references.bib</code>
+            </p>
+          </div>
+        </details>
+      </section>
+    </aside>
+  </div>
+
+</body>
+
+</html>
