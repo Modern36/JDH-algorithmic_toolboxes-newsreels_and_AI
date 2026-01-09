@@ -1,0 +1,12 @@
+Using a computational film studies framework, this article examines a major
+Swedish newsreel archive—the Journal Digital collection—deploying among others:
+signal archaeology, named entity recognition, and geocoding. We also apply a
+broad algorithmic toolbox to convert both intertitles and speech into a
+transcribed and timestamped corpus of the entire collection. Our basic idea is
+to construct a number of mid-sized datasets from the Journal Digital collection
+in different modalities, and proceed with an examination using various
+approaches. Consequently, our intention is to increase the scholarly capacity
+of media historical sources, while at the same time critically scrutinising AI
+and algorithmic toolboxes for the multimodal study of the past.
+
+Media History, Newsreels, Multimodal Analysis, Digital humanities, Film studies
